@@ -45,6 +45,7 @@
   ],
   "rules": {
     "max-depth": ["error", 3],
+    "max-lines": ["error", { "max": 100, "skipBlankLines": true }],
     "react/react-in-jsx-scope": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": "error",
@@ -81,8 +82,11 @@
     "import/no-unresolved": "error",
     "import/extensions": [2, "never"],
     "import/order": [
-      2,
-      { "groups": [["builtin", "external"], "internal", "parent", "sibling"] }
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": ["builtin", "external", "parent", "sibling", "index"]
+      }
     ],
     "import/prefer-default-export": [0],
     "import/no-default-export": "error",
