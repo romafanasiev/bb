@@ -4,9 +4,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 
-import { headerStyles } from './styles';
+import { headerStyles } from './headerStyles';
 
-import { Logo } from 'Components/Logo';
+import { Logo } from 'Components';
 
 const { appBar, nav, navUl, menu } = headerStyles;
 
