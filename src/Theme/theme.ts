@@ -23,16 +23,18 @@ theme = createTheme(theme, {
     secondary: {
       main: secondary,
     },
+    additional: {
+      main: additionalColor,
+    },
     background: {
       paper: additionalColor,
-      default: primary,
+      default: additionalColor,
     },
   },
   components: {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          // 'box-shadow': 'none',
           [theme.breakpoints.up('md')]: {
             height: headerHeight,
           },
@@ -42,5 +44,27 @@ theme = createTheme(theme, {
         },
       },
     },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          color: secondary,
+        },
+      },
+    },
   },
 });
+
+declare module '@mui/material/styles' {
+  interface Palette {
+    additional: Palette['primary'];
+  }
+  interface PaletteOptions {
+    additional: PaletteOptions['primary'];
+  }
+}
+
+// declare module '@mui/material/AppBar' {
+//   interface AppBarPropsColorOverrides {
+//     additional: true;
+//   }
+// }
