@@ -16,6 +16,9 @@ export let theme = createTheme();
 theme = createTheme(theme, {
   palette: {
     mode: 'light',
+    common: {
+      white,
+    },
     primary: {
       main: primary,
       contrastText: white,
@@ -27,7 +30,7 @@ theme = createTheme(theme, {
       main: additionalColor,
     },
     background: {
-      paper: additionalColor,
+      paper: primary,
       default: additionalColor,
     },
   },
