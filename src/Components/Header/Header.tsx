@@ -4,9 +4,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 
-import { headerStyles } from './headerStyles';
-
 import { Logo } from 'Components';
+
+import { headerStyles } from './headerStyles';
 
 const { appBar, nav, navUl, menu } = headerStyles;
 
@@ -39,6 +39,7 @@ export const Header = () => {
         onClick={() => setIsOpen((prevState) => !prevState)}
         sx={menu}
       />
+
       <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(false)}>
         Menu
       </Drawer>

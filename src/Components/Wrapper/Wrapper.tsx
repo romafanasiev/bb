@@ -10,6 +10,9 @@ export const Wrapper = (props: PropsWithChildren) => (
     sx={{
       top: { xs: headerHeightSm, md: headerHeight },
       position: 'relative',
+      margin: '0 auto',
+      padding: 2,
+      maxWidth: '1200px',
     }}
   >
     {props.children}
