@@ -15,6 +15,7 @@ export const useWavesurfer = (track: ITrack, container: string) => {
       waveColor: white,
       progressColor: secondary,
       barWidth: 3,
+      barRadius: 2,
       hideScrollbar: true,
       responsive: true,
       skipLength: 10,
