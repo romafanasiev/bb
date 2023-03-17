@@ -1,4 +1,5 @@
-ul {
+ul,
+p {
   display: block;
   list-style-type: none;
   margin-block-start: 0;

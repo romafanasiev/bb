@@ -2,7 +2,7 @@ import { globalStyles } from 'Constants';
 import { theme } from 'Theme';
 
 export const playerStyles = {
-  player: {
+  wrapper: {
     position: 'fixed',
     bottom: 0,
     p: theme.spacing(0, 4, 0, 0),
