@@ -10,6 +10,7 @@ interface Portal extends PropsWithChildren {
 const createWrapperAppendToBody = (wrapperId: string) => {
   const wrapperElement = document.createElement('div');
   wrapperElement.setAttribute('id', wrapperId);
+  wrapperElement.setAttribute('data-testid', wrapperId);
   document.body.appendChild(wrapperElement);
 
   return wrapperElement;
