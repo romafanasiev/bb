@@ -7,4 +7,5 @@ export const globalStyles = {
   headerHeightSm: '64px',
   headerHeight: '90px',
   playerHeight: '70px',
+  maxWidth: '345px',
 };
