@@ -12,7 +12,6 @@ const firebaseConfig = {
   measurementId: import.meta.env.FIREBASE_MEASUREMENT_ID,
 };
 
-// eslint-disable-next-line unused-imports/no-unused-vars
 const app = initializeApp(firebaseConfig);
 export const firebaseAuth = getAuth(app);
 
