@@ -1,2 +1,3 @@
 export * from './globalStyles';
-export * from './portalsIds';
+export * from './wrappersIds';
+export * from './routes';
