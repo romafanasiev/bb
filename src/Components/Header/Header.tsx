@@ -4,7 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 
-import { Logo } from 'Components';
+import { TextLogo } from 'Components';
 
 import { headerStyles } from './headerStyles';
 
@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <AppBar color="primary" sx={appBar}>
-      <Logo />
+      <TextLogo />
 
       <Box component="nav" sx={nav}>
         <Stack component="ul" direction="row" gap={4} sx={navUl}>

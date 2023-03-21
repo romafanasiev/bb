@@ -1,5 +1,5 @@
 import { Header, Wrapper, Player } from 'Components';
-import { CONTAINERID } from 'Constants';
+import { containersIds } from 'Constants';
 
 import demo from '../../Assets/music/demo.wav';
 import background from '../../Assets/images/thumbnail.jpg';
@@ -15,8 +15,8 @@ export const MainLayout = () => (
     <Header />
     <Wrapper>
       Main content
-      <div id={CONTAINERID.progressBar} />
+      <div id={containersIds.progressBar} />
     </Wrapper>
-    <Player track={track} progressbarWrapperId={CONTAINERID.progressBar} />
+    <Player track={track} progressbarWrapperId={containersIds.progressBar} />
   </>
 );

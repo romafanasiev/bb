@@ -2,8 +2,9 @@ import { FC } from 'react';
 import { Stack } from '@mui/material';
 
 import { Portal } from 'Components';
-import { CONTAINERID } from 'Constants';
+import { containersIds } from 'Constants';
 import { useWavesurfer } from 'Hooks/useWavesurfer/useWavesurfer';
+import { TContainer } from 'Types/containers';
 
 import { playerStyles } from './playerStyles';
 import { Controls } from './components/Controls';
@@ -13,7 +14,7 @@ import { VolumeControl } from './components/VolumeControl';
 import type { ITrack } from 'Types';
 interface PlayerProps {
   track: ITrack;
-  progressbarWrapperId: CONTAINERID;
+  progressbarWrapperId: TContainer;
 }
 
 const { wrapper } = playerStyles;
@@ -26,7 +27,7 @@ export const Player: FC<PlayerProps> = ({ track, progressbarWrapperId }) => {
   }
 
   return (
-    <Portal wrapperId={CONTAINERID.player}>
+    <Portal wrapperId={containersIds.player}>
       <Stack sx={wrapper} justifyContent="space-between" flexDirection="row">
         <DisplayInfo track={track} />
         <Controls

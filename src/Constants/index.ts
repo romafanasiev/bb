@@ -1,3 +1,3 @@
 export * from './globalStyles';
-export * from './wrappersIds';
+export * from './containersIds';
 export * from './routes';

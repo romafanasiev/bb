@@ -1,1 +1,2 @@
-export * from './logo';
+export * from './textLogo';
+export * from './fullLogo';
