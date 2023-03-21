@@ -1,10 +1,10 @@
 import { FC, PropsWithChildren, useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { PortalsIds } from 'Constants';
+import { TContainer } from 'Types/containers';
 
 interface Portal extends PropsWithChildren {
-  wrapperId: PortalsIds;
+  wrapperId: TContainer;
 }
 
 const createWrapperAppendToBody = (wrapperId: string) => {

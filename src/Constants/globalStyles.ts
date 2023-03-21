@@ -8,4 +8,12 @@ export const globalStyles = {
   headerHeight: '90px',
   playerHeight: '70px',
   maxWidth: '345px',
+
+  letterSpacing: '-0.17px',
+  regularFontWeight: 400,
+  mediumFontWeight: 500,
+  boldFontWeight: 600,
+
+  elementWidth: '345px',
+  elementMobileWidth: '280px',
 };

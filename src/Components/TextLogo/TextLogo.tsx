@@ -1,10 +1,10 @@
 import { SvgIcon } from '@mui/material';
 
-import { LogoIcon } from 'Assets';
+import { TextLogoIcon } from 'Assets';
 
-export const Logo = () => (
+export const TextLogo = () => (
   <SvgIcon
-    component={LogoIcon}
+    component={TextLogoIcon}
     inheritViewBox
     sx={{ height: '60px', width: '300px' }}
   />

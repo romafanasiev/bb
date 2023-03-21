@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { ROUTES } from 'Constants';
+import { routes } from 'Constants';
 import { LogInPage, SignUpPage } from 'Pages';
 import { SecondaryLayout } from 'Layouts';
 
-const { signUp, logIn } = ROUTES;
+const { signUp, logIn } = routes;
 
 export const Routing = () => (
   <Routes>
