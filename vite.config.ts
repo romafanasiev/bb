@@ -1,8 +1,8 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import svgr from 'vite-plugin-svgr';
 
@@ -14,13 +14,16 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/Tests/setup.ts',
-    exclude: [
-      '**/node_modules/**',
-      '**/dist/**',
-      '**/cypress/**',
-      '**/.{idea,git,cache,output,temp}/**',
-      '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
-      '**/src/Utils/firebase/**',
-    ],
+    // exclude: [
+    //   '**/node_modules/**',
+    //   '**/dist/**',
+    //   '**/cypress/**',
+    //   '**/.{idea,git,cache,output,temp}/**',
+    //   '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
+    //   '**/src/Utils/firebase/**.ts',
+    // ],
+    // deps: {
+    //   inline: [/@nuxt\/test-utils-edge/],
+    // },
   },
 });

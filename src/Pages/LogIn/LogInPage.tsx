@@ -1,11 +1,8 @@
 import { useForm } from 'react-hook-form';
 // import { yupResolver } from '@hookform/resolvers/yup';
-import { Box } from '@mui/material';
+import { Stack } from '@mui/material';
 
-import { FormField, FullLogo } from 'Components';
-import { globalStyles } from 'Constants';
-
-const { elementWidth, elementMobileWidth } = globalStyles;
+import { FormField } from 'Components';
 
 export const LogInPage = () => {
   const { control } = useForm({
@@ -15,15 +12,9 @@ export const LogInPage = () => {
   });
 
   return (
-    <>
-      <FullLogo />
-      <Box
-        component="form"
-        sx={{ width: { xs: elementMobileWidth, sm: elementWidth } }}
-      >
-        <FormField name="email" control={control} placeholder="email" />
-        <FormField name="password" control={control} placeholder="password" />
-      </Box>
-    </>
+    <Stack component="form" gap={3} sx={{ width: '100%' }}>
+      <FormField name="email" control={control} placeholder="email" />
+      <FormField name="password" control={control} placeholder="password" />
+    </Stack>
   );
 };
