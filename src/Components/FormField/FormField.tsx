@@ -1,10 +1,12 @@
 import { TextField } from '@mui/material';
 import { Control, Controller, FieldValues } from 'react-hook-form';
 
+import { TFormField } from 'Types/formFields';
+
 import type { TextFieldProps } from '@mui/material/TextField';
 
 type FormFieldProps = {
-  name: string;
+  name: TFormField;
   control: Control<FieldValues, any>;
 } & TextFieldProps;
 
