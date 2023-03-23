@@ -18,9 +18,9 @@ interface TPassCheck {
 
 export type TPassInputProps = Omit<TTextInputProps, 'isSubmitted'> & TPassCheck;
 
-export type TFormField = {
+export type TFormField<T extends FieldValues> = {
   name: (typeof formFieldNames)[keyof typeof formFieldNames];
-  control?: Control<FieldValues, any>;
+  control?: Control<T, any>;
   defaultValue?: string;
 } & TextFieldProps &
   TPassCheck;

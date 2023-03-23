@@ -3,18 +3,19 @@ import { Controller } from 'react-hook-form';
 import { TextInput, PassInput } from 'Components';
 
 import type { TFormField } from 'Types';
+import type { FieldValues, Path, PathValue } from 'react-hook-form';
 
-export const FormField = ({
+export const FormField = <T extends FieldValues>({
   control,
   name,
-  defaultValue = '',
+  defaultValue,
   type = 'text',
   ...rest
-}: TFormField) => (
+}: TFormField<T>) => (
   <Controller
-    name={name}
+    name={name as Path<T>}
     control={control}
-    defaultValue={defaultValue}
+    defaultValue={defaultValue as PathValue<T, Path<T>>}
     render={({
       field: { onChange, value, onBlur },
       fieldState: { error },

@@ -6,19 +6,24 @@ import { useForm } from 'react-hook-form';
 import type { ReactElement } from 'react';
 import type { AnyObject, ObjectSchema } from 'yup';
 import type { TFormField } from 'Types';
+import type { FieldValues, SubmitHandler } from 'react-hook-form';
 
-interface IFormProps {
+interface IFormProps<T extends FieldValues> {
   validation: ObjectSchema<any, AnyObject, any, ''>;
-  onSubmit: () => void;
-  children: ReactElement<TFormField> | ReactElement<TFormField>[];
+  onSubmit: SubmitHandler<T>;
+  children: ReactElement<TFormField<T>> | ReactElement<TFormField<T>>[];
 }
 
-export const Form = ({ validation, onSubmit, children }: IFormProps) => {
+export const Form = <T extends FieldValues>({
+  validation,
+  onSubmit,
+  children,
+}: IFormProps<T>) => {
   const {
     control,
     handleSubmit,
     formState: { errors, isSubmitted },
-  } = useForm({
+  } = useForm<T>({
     resolver: yupResolver(validation),
   });
 
