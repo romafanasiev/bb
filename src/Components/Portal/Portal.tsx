@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren, useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { TContainer } from 'Types/containers';
+import type { TContainer } from 'Types';
 
 interface Portal extends PropsWithChildren {
   wrapperId: TContainer;

@@ -1,25 +1,24 @@
-import { FC } from 'react';
 import { Stack } from '@mui/material';
 
 import { Portal } from 'Components';
 import { containersIds } from 'Constants';
 import { useWavesurfer } from 'Hooks/useWavesurfer/useWavesurfer';
-import { TContainer } from 'Types/containers';
 
 import { playerStyles } from './playerStyles';
 import { Controls } from './components/Controls';
 import { DisplayInfo } from './components/DisplayInfo';
 import { VolumeControl } from './components/VolumeControl';
 
-import type { ITrack } from 'Types';
-interface PlayerProps {
+import type { ITrack, TContainer } from 'Types';
+
+interface Props {
   track: ITrack;
   progressbarWrapperId: TContainer;
 }
 
 const { wrapper } = playerStyles;
 
-export const Player: FC<PlayerProps> = ({ track, progressbarWrapperId }) => {
+export const Player = ({ track, progressbarWrapperId }: Props) => {
   const waveSurferRef = useWavesurfer(track, `#${progressbarWrapperId}`);
 
   if (waveSurferRef === null) {

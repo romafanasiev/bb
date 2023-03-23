@@ -6,3 +6,6 @@ export * from './Player';
 export * from './Portal';
 export * from './FullLogo';
 export * from './FormField';
+export * from './PassInput';
+export * from './TextInput';
+export * from './Form';

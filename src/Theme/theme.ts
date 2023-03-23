@@ -8,9 +8,15 @@ const {
   secondary,
   white,
   additionalColor,
+  error,
   headerHeightSm,
   headerHeight,
+  regularFontWeight,
   mediumFontWeight,
+  boldFontWeight,
+  letterSpacing,
+  borderRadius,
+  elementMaxWidth,
 } = globalStyles;
 
 export let theme = createTheme();
@@ -31,9 +37,64 @@ theme = createTheme(theme, {
     additional: {
       main: additionalColor,
     },
+    error: {
+      main: error,
+    },
     background: {
       paper: primary,
       default: additionalColor,
+    },
+  },
+  typography: {
+    htmlFontSize: 16,
+    fontSize: 14,
+    fontWeightRegular: regularFontWeight,
+    fontWeightMedium: mediumFontWeight,
+    fontWeightBold: boldFontWeight,
+    h1: {
+      fontWeight: boldFontWeight,
+      letterSpacing,
+      fontSize: '3.375rem',
+      lineHeight: '3.5rem',
+    },
+    h2: {
+      fontWeight: boldFontWeight,
+      letterSpacing,
+      fontSize: '3rem',
+      lineHeight: '3.5rem',
+    },
+    h3: {
+      letterSpacing,
+      fontWeight: boldFontWeight,
+      fontSize: '2.25rem',
+      lineHeight: '2.5rem',
+    },
+    h4: {
+      letterSpacing,
+      fontWeight: boldFontWeight,
+      fontSize: '1.5rem',
+      lineHeight: '2rem',
+    },
+    h5: {
+      letterSpacing,
+      fontWeight: boldFontWeight,
+      fontSize: '1.3125rem',
+      lineHeight: '1.5rem',
+    },
+    body1: {
+      letterSpacing,
+      fontSize: '1rem',
+      lineHeight: '1.5rem',
+    },
+    body2: {
+      letterSpacing,
+      fontSize: '0.875rem',
+      lineHeight: '1.125rem',
+    },
+    caption: {
+      letterSpacing,
+      fontSize: '0.75rem',
+      lineHeight: '1rem',
     },
   },
   components: {
@@ -63,9 +124,34 @@ theme = createTheme(theme, {
           fontSize: '0.875rem',
           fontWeight: mediumFontWeight,
           color: white,
-          '&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: primary,
+          '& fieldset': {
             borderWidth: '1px',
+            borderColor: additionalColor,
+          },
+          '&.MuiInputBase-colorPrimary.Mui-focused fieldset': {
+            borderWidth: '1px',
+            borderColor: additionalColor,
+          },
+          '&.MuiOutlinedInput-root:hover fieldset': {
+            borderColor: additionalColor,
+          },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius,
+        },
+        // notchedOutline: {
+        //   borderColor: additionalColor,
+        // },
+        input: {
+          '&:-webkit-autofill': {
+            borderColor: 'red',
+            borderRadius: '0',
+            WebkitBoxShadow: `0 0 0 30px ${primary} inset`,
+            WebkitTextFillColor: `${white}`,
           },
         },
       },
@@ -73,23 +159,46 @@ theme = createTheme(theme, {
     MuiInputLabel: {
       styleOverrides: {
         root: {
+          color: additionalColor,
           fontWeight: mediumFontWeight,
           transform: 'translate(15px, 50%)',
           '&.Mui-focused': {
-            color: secondary,
-            transform: 'translate(16px, -14px) scale(0.67)',
+            color: additionalColor,
+            transform: 'translate(14px, -8px) scale(0.67)',
+          },
+          '&.Mui-error': {
+            color: error,
+          },
+          '&.Mui-focused.Mui-error': {
+            color: error,
           },
         },
         shrink: {
-          color: secondary,
-          transform: 'translate(16px, -14px) scale(0.67)',
+          color: additionalColor,
+          transform: 'translate(14px, -8px) scale(0.67)',
         },
       },
     },
-    MuiOutlinedInput: {
+    MuiButton: {
       styleOverrides: {
-        notchedOutline: {
-          borderColor: additionalColor,
+        root: {
+          maxWidth: elementMaxWidth,
+          borderRadius,
+          fontWeight: boldFontWeight,
+          '&.MuiButton-text': {
+            fontWeight: 700,
+            fontSize: '1rem',
+            textTransform: 'uppercase',
+          },
+          '&.MuiButton-contained': {
+            borderRadius,
+          },
+          '&.MuiButton-outlined': {
+            borderRadius,
+          },
+          '&.Mui-disabled': {
+            color: error,
+          },
         },
       },
     },
@@ -105,8 +214,8 @@ declare module '@mui/material/styles' {
   }
 }
 
-// declare module '@mui/material/AppBar' {
-//   interface AppBarPropsColorOverrides {
-//     additional: true;
-//   }
-// }
+declare module '@mui/material/Button' {
+  interface ButtonPropsColorOverrides {
+    additional: true;
+  }
+}
