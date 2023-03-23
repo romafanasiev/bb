@@ -1,14 +1,14 @@
-import { FC } from 'react';
 import { Stack } from '@mui/material';
 
-import { ITrack } from 'Types';
 import { globalStyles } from 'Constants';
 
-interface DisplayInfoProps {
+import type { ITrack } from 'Types';
+
+interface Props {
   track: ITrack;
 }
 
-export const DisplayInfo: FC<DisplayInfoProps> = ({ track }) => (
+export const DisplayInfo = ({ track }: Props) => (
   <Stack
     flexDirection="row"
     gap={2}

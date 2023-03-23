@@ -1,3 +1,3 @@
 import { routes } from 'Constants';
 
-export type TContainer = (typeof routes)[keyof typeof routes];
+export type TRoutes = (typeof routes)[keyof typeof routes];

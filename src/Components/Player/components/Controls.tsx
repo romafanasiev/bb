@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { IconButton, Stack } from '@mui/material';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import Replay10Icon from '@mui/icons-material/Replay10';
@@ -9,7 +9,7 @@ import ShuffleIcon from '@mui/icons-material/Shuffle';
 
 import { controlsStyles } from './controlStyles';
 
-interface ControlsProps {
+interface Props {
   handlePlay: () => void;
   handleForward: () => void;
   hadnleBackward: () => void;
@@ -17,11 +17,11 @@ interface ControlsProps {
 
 const { playButton, subButton } = controlsStyles;
 
-export const Controls: FC<ControlsProps> = ({
+export const Controls = ({
   handlePlay,
   handleForward,
   hadnleBackward,
-}) => {
+}: Props) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayClick = () => {

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 
 import { globalStyles } from 'Constants';
-import { ITrack } from 'Types';
+
+import type { ITrack } from 'Types';
 
 const { white, secondary } = globalStyles;
 

@@ -3,6 +3,7 @@ export const globalStyles = {
   secondary: '#e1392a',
   white: '#fff',
   additionalColor: '#8ba5bc',
+  error: '#d32f2f',
 
   headerHeightSm: '64px',
   headerHeight: '90px',
@@ -15,4 +16,6 @@ export const globalStyles = {
 
   elementMaxWidth: '345px',
   elementMaxMobileWidth: '280px',
+
+  borderRadius: '8px',
 };

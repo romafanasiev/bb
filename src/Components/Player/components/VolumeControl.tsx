@@ -1,12 +1,12 @@
+import { useState } from 'react';
 import { VolumeDown, VolumeUp } from '@mui/icons-material';
 import { Stack, Slider } from '@mui/material';
-import { FC, useState } from 'react';
 
-interface VolumeControlProps {
+interface Props {
   handleVolume: (value: number) => void;
 }
 
-export const VolumeControl: FC<VolumeControlProps> = ({ handleVolume }) => {
+export const VolumeControl = ({ handleVolume }: Props) => {
   const [volume, setVolume] = useState(0.5);
 
   const handleChange = (_event: Event, newValue: number | number[]) => {
