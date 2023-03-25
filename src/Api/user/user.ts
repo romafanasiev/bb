@@ -1,15 +1,27 @@
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
-const auth = getAuth();
+import { TSignUpForm } from 'Types';
+import { firebaseAuth } from 'Utils/firebase';
 
-export const createAuthUserWithEmailAndPassword = async (
-  email: string,
-  password: string,
-) => {
+export const createAuthUserWithEmailAndPassword = async (data: TSignUpForm) => {
+  const { nickname, email, password } = data;
+
   try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const res = await createUserWithEmailAndPassword(
+      firebaseAuth,
+      email,
+      password,
+    );
+
+    if (firebaseAuth.currentUser) {
+      await updateProfile(firebaseAuth.currentUser, {
+        displayName: nickname,
+      });
+    }
     // eslint-disable-next-line no-console
     console.log(res);
+
+    return res.user;
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

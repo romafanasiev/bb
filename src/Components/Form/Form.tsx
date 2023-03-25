@@ -1,15 +1,15 @@
 import { Children, cloneElement } from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Stack, Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import type { ReactElement } from 'react';
-import type { AnyObject, ObjectSchema } from 'yup';
 import type { TFormField } from 'Types';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
+import type { ZodSchema } from 'zod';
 
 interface IFormProps<T extends FieldValues> {
-  validation: ObjectSchema<any, AnyObject, any, ''>;
+  validation: ZodSchema<T>;
   onSubmit: SubmitHandler<T>;
   children: ReactElement<TFormField<T>> | ReactElement<TFormField<T>>[];
 }
@@ -22,9 +22,9 @@ export const Form = <T extends FieldValues>({
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitted },
+    formState: { errors, submitCount, isValid, isDirty },
   } = useForm<T>({
-    resolver: yupResolver(validation),
+    resolver: zodResolver(validation),
   });
 
   return (
@@ -37,7 +37,10 @@ export const Form = <T extends FieldValues>({
           variant="text"
           color="additional"
           onClick={handleSubmit(onSubmit)}
-          disabled={isSubmitted && !!errors}
+          disabled={
+            (!!errors && !isDirty && submitCount === 1) ||
+            (!isValid && submitCount !== 0)
+          }
         >
           submit
         </Button>

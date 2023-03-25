@@ -8,7 +8,7 @@ import type { FieldValues, Path, PathValue } from 'react-hook-form';
 export const FormField = <T extends FieldValues>({
   control,
   name,
-  defaultValue,
+  defaultValue = '',
   type = 'text',
   ...rest
 }: TFormField<T>) => (

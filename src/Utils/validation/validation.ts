@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import { z } from 'zod';
 
 import { formFieldNames, errorMessages } from 'Constants';
 
@@ -10,36 +10,35 @@ const {
   emailFormat,
 } = errorMessages;
 
-const emailValidation = yup
-  .string()
-  .required(requiredField)
+const emailValidation = z
+  .string({ required_error: requiredField })
   .trim()
-  .matches(
-    /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
-    emailFormat,
-  );
+  .email({ message: emailFormat });
 
-const nicknameValidation = yup
-  .string()
-  .required(requiredField)
+const nicknameValidation = z
+  .string({ required_error: requiredField })
   .trim()
-  .min(2, 'Please enter minimum 2 symbols')
+  .min(2, { message: 'Please enter minimum 2 symbols' })
   .max(32, maximumLength)
-  .matches(/^[a-zA-Z]+$/, 'Please use only English letters');
+  .regex(/^[a-zA-Z]+$/, { message: 'Please use only English letters' });
 
-const passwordValidation = yup
-  .string()
-  .required(requiredField)
+const passwordValidation = z
+  .string({ required_error: requiredField })
   .trim()
-  .min(8, 'Please enter minimum 8 symbols')
-  .max(32, maximumLength)
-  .matches(
+  .min(8, { message: 'Please enter minimum 8 symbols' })
+  .max(32, { message: maximumLength })
+  .regex(
     /^.*((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-    passErr,
+    { message: passErr },
   );
 
-export const signUpValidation = yup.object().shape({
+export const signUpValidation = z.object({
   [email]: emailValidation,
   [nickname]: nicknameValidation,
   [password]: passwordValidation,
+});
+
+export const loginValidation = z.object({
+  [email]: emailValidation,
+  [nickname]: nicknameValidation,
 });
