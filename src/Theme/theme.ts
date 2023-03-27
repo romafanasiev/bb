@@ -17,6 +17,7 @@ const {
   letterSpacing,
   borderRadius,
   elementMaxWidth,
+  elementMaxMobileWidth,
 } = globalStyles;
 
 export let theme = createTheme();
@@ -101,11 +102,11 @@ theme = createTheme(theme, {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          [theme.breakpoints.up('md')]: {
-            height: headerHeight,
-          },
           [theme.breakpoints.down('md')]: {
             height: headerHeightSm,
+          },
+          [theme.breakpoints.up('md')]: {
+            height: headerHeight,
           },
         },
       },
@@ -143,9 +144,6 @@ theme = createTheme(theme, {
         root: {
           borderRadius,
         },
-        // notchedOutline: {
-        //   borderColor: additionalColor,
-        // },
         input: {
           '&:-webkit-autofill': {
             borderColor: 'red',
@@ -198,6 +196,18 @@ theme = createTheme(theme, {
           },
           '&.Mui-disabled': {
             color: error,
+          },
+        },
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        root: {
+          [theme.breakpoints.down('md')]: {
+            maxWidth: elementMaxMobileWidth,
+          },
+          [theme.breakpoints.up('md')]: {
+            maxWidth: elementMaxWidth,
           },
         },
       },
