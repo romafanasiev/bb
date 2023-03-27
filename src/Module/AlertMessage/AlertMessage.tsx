@@ -29,6 +29,9 @@ export const AlertMessage = () => {
         left: '20px',
         mt: '20px',
         '&.MuiAlert-root': { position: 'absolute' },
+        '& > .MuiAlert-icon > svg': {
+          color: 'inherit',
+        },
       }}
     >
       {message.text}
