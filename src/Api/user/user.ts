@@ -1,7 +1,9 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
 
 import { TSignUpForm } from 'Types';
 import { firebaseAuth } from 'Utils/firebase';
+import { errorMessages } from 'Constants';
 
 export const createAuthUserWithEmailAndPassword = async (data: TSignUpForm) => {
   const { nickname, email, password } = data;
@@ -18,12 +20,12 @@ export const createAuthUserWithEmailAndPassword = async (data: TSignUpForm) => {
         displayName: nickname,
       });
     }
-    // eslint-disable-next-line no-console
-    console.log(res);
 
     return res.user;
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
+    if (error instanceof FirebaseError) {
+      throw new Error(error.message);
+    }
+    throw new Error(errorMessages.connectionErr);
   }
 };

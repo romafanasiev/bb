@@ -2,17 +2,24 @@ import { Form, FormField } from 'Components';
 import { formFieldNames } from 'Constants';
 import { signUpValidation } from 'Utils/validation';
 import { createAuthUserWithEmailAndPassword } from 'Api';
+import { useAlertMessageContext, useUserContext } from 'Hooks';
 
 import type { TSignUpForm } from 'Types';
 
 const { email, nickname, password } = formFieldNames;
 
 export const SignUpPage = () => {
+  const { setUserData } = useUserContext();
+  const { setNewMessage } = useAlertMessageContext();
   const onSubmit = async (data: TSignUpForm) => {
-    // eslint-disable-next-line no-console
-    const res = await createAuthUserWithEmailAndPassword(data);
-    // eslint-disable-next-line no-console
-    console.log(res);
+    try {
+      const user = await createAuthUserWithEmailAndPassword(data);
+      setUserData(user);
+    } catch (error) {
+      if (error instanceof Error) {
+        setNewMessage({ text: error.message, severity: 'error' });
+      }
+    }
   };
 
   return (
