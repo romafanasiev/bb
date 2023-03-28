@@ -18,7 +18,7 @@ export const useLogin = () => {
     },
     onError: (error) => {
       switch (error.code) {
-        case 'auth/invalid-password':
+        case 'auth/wrong-password':
           setNewMessage({ text: logInErr, severity: 'error' });
           break;
         case 'auth/user-not-found': {
