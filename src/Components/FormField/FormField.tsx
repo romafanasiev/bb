@@ -1,4 +1,5 @@
 import { Controller } from 'react-hook-form';
+import { Button } from '@mui/material';
 
 import { TextInput, PassInput } from 'Components';
 
@@ -10,6 +11,8 @@ export const FormField = <T extends FieldValues>({
   name,
   defaultValue = '',
   type = 'text',
+  label,
+  color,
   ...rest
 }: TFormField<T>) => (
   <Controller
@@ -32,7 +35,16 @@ export const FormField = <T extends FieldValues>({
               onChange={onChange}
               helperText={error?.message}
               type={type}
+              label={label}
             />
+          );
+
+        case 'file':
+          return (
+            <Button variant="contained" component="label">
+              {value ? value : label}
+              <input hidden type={type} onChange={onChange} onBlur={onBlur} />
+            </Button>
           );
 
         default:
@@ -46,6 +58,8 @@ export const FormField = <T extends FieldValues>({
               onChange={onChange}
               helperText={error?.message}
               type={type}
+              label={label}
+              color={color}
             />
           );
       }

@@ -19,7 +19,7 @@ export const SignUpPage = () => {
   };
 
   return (
-    <Form<TSignUpForm> onSubmit={onSubmit} validation={signUpValidation}>
+    <Form onSubmit={onSubmit} validation={signUpValidation}>
       <FormField name={email} type="email" sx={{ mt: 2 }} label="Email" />
       <FormField name={nickname} label="Nickname" />
       <FormField

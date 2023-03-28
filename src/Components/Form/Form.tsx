@@ -7,28 +7,31 @@ import type { ReactElement } from 'react';
 import type { TFormField } from 'Types';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import type { ZodSchema } from 'zod';
+import type { SxProps } from '@mui/material';
 
 interface IFormProps<T extends FieldValues> {
-  validation: ZodSchema<T>;
-  onSubmit: SubmitHandler<T>;
+  validation?: ZodSchema<T>;
+  onSubmit?: SubmitHandler<T>;
   children: ReactElement<TFormField<T>> | ReactElement<TFormField<T>>[];
+  sx?: SxProps;
 }
 
 export const Form = <T extends FieldValues>({
   validation,
   onSubmit,
   children,
+  sx,
 }: IFormProps<T>) => {
   const {
     control,
     handleSubmit,
     formState: { errors, submitCount, isValid, isDirty },
   } = useForm<T>({
-    resolver: zodResolver(validation),
+    resolver: validation && zodResolver(validation),
   });
 
   return (
-    <Stack component="form" gap={3} sx={{ width: '100%' }}>
+    <Stack component="form" sx={{ width: '100%', gap: 3, ...sx }}>
       <>
         {Children.map(children, (child) => cloneElement(child, { control }))}
 
@@ -36,7 +39,7 @@ export const Form = <T extends FieldValues>({
           type="submit"
           variant="text"
           color="additional"
-          onClick={handleSubmit(onSubmit)}
+          onClick={onSubmit && handleSubmit(onSubmit)}
           disabled={
             (!!errors && !isDirty && submitCount === 1) ||
             (!isValid && submitCount !== 0)

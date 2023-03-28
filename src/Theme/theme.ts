@@ -18,6 +18,7 @@ const {
   borderRadius,
   elementMaxWidth,
   elementMaxMobileWidth,
+  elementHeight,
 } = globalStyles;
 
 export let theme = createTheme();
@@ -121,7 +122,7 @@ theme = createTheme(theme, {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          height: '46px',
+          height: elementHeight,
           fontSize: '0.875rem',
           fontWeight: mediumFontWeight,
           color: white,
@@ -183,6 +184,7 @@ theme = createTheme(theme, {
           maxWidth: elementMaxWidth,
           borderRadius,
           fontWeight: boldFontWeight,
+          height: elementHeight,
           '&.MuiButton-text': {
             fontWeight: 700,
             fontSize: '1rem',
