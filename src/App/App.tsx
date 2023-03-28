@@ -1,21 +1,24 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { AlertMessageProvider, UserProvider } from 'Context';
+import { AlertMessageProvider } from 'Context';
 import { AlertMessage } from 'Module';
 import { Routing } from 'Routes';
 import { theme } from 'Theme';
 
+const queryClient = new QueryClient();
+
 export const App = () => (
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <BrowserRouter>
-      <UserProvider>
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <BrowserRouter>
         <AlertMessageProvider>
           <Routing />
           <AlertMessage />
         </AlertMessageProvider>
-      </UserProvider>
-    </BrowserRouter>
-  </ThemeProvider>
+      </BrowserRouter>
+    </ThemeProvider>
+  </QueryClientProvider>
 );

@@ -10,6 +10,8 @@ const {
   emailFormat,
 } = errorMessages;
 
+const requiredFieldValidation = z.string({ required_error: requiredField });
+
 const emailValidation = z
   .string({ required_error: requiredField })
   .trim()
@@ -40,5 +42,5 @@ export const signUpValidation = z.object({
 
 export const loginValidation = z.object({
   [email]: emailValidation,
-  [nickname]: nicknameValidation,
+  [password]: requiredFieldValidation,
 });

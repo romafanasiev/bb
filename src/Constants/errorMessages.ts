@@ -5,6 +5,5 @@ export const errorMessages = {
   connectionErr: 'Connection problem',
   signUpErr: 'User already exist',
   logInErr: 'The email or password is incorrect',
-  userNotFound: 'User not found',
   emailFormat: 'Incorrect email format',
 } as const;
