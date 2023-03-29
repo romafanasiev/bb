@@ -14,7 +14,7 @@ export const PassInput = ({
   onBlur,
   helperText,
   withPassCheck = false,
-  type,
+  type = 'password',
   ...rest
 }: TPassInputProps) => {
   const [isVisible, setIsVisible] = useState(false);

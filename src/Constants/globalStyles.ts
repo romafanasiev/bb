@@ -14,6 +14,7 @@ export const globalStyles = {
   mediumFontWeight: 500,
   boldFontWeight: 600,
 
+  elementHeight: '46px',
   elementMaxWidth: '345px',
   elementMaxMobileWidth: '280px',
 
