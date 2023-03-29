@@ -125,17 +125,11 @@ theme = createTheme(theme, {
           height: elementHeight,
           fontSize: '0.875rem',
           fontWeight: mediumFontWeight,
-          color: white,
           '& fieldset': {
             borderWidth: '1px',
-            borderColor: additionalColor,
           },
           '&.MuiInputBase-colorPrimary.Mui-focused fieldset': {
             borderWidth: '1px',
-            borderColor: additionalColor,
-          },
-          '&.MuiOutlinedInput-root:hover fieldset': {
-            borderColor: additionalColor,
           },
         },
       },
@@ -147,7 +141,6 @@ theme = createTheme(theme, {
         },
         input: {
           '&:-webkit-autofill': {
-            borderColor: 'red',
             borderRadius: '0',
             WebkitBoxShadow: `0 0 0 30px ${primary} inset`,
             WebkitTextFillColor: `${white}`,
@@ -158,11 +151,9 @@ theme = createTheme(theme, {
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: additionalColor,
           fontWeight: mediumFontWeight,
           transform: 'translate(15px, 50%)',
           '&.Mui-focused': {
-            color: additionalColor,
             transform: 'translate(14px, -8px) scale(0.67)',
           },
           '&.Mui-error': {
@@ -173,7 +164,6 @@ theme = createTheme(theme, {
           },
         },
         shrink: {
-          color: additionalColor,
           transform: 'translate(14px, -8px) scale(0.67)',
         },
       },

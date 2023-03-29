@@ -1,7 +1,8 @@
-import { Form, FormField } from 'Components';
+import { Form, PassFormField, TextFormField } from 'Components';
 import { formFieldNames } from 'Constants';
 import { loginValidation } from 'Utils/validation';
 import { useLogin } from 'Hooks';
+import { inputStyles } from 'Styles';
 
 import type { TLoginForm } from 'Types';
 
@@ -17,11 +18,15 @@ export const LogInPage = () => {
 
   return (
     <Form onSubmit={onSubmit} validation={loginValidation}>
-      <FormField name={formFieldNames.email} placeholder="email" />
-      <FormField
+      <TextFormField
+        name={formFieldNames.email}
+        label="Email"
+        sx={inputStyles}
+      />
+      <PassFormField
         name={formFieldNames.password}
-        placeholder="password"
-        type="password"
+        label="Password"
+        sx={inputStyles}
       />
     </Form>
   );

@@ -7,20 +7,17 @@ import type { ReactElement } from 'react';
 import type { TFormField } from 'Types';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import type { ZodSchema } from 'zod';
-import type { SxProps } from '@mui/material';
 
 interface IFormProps<T extends FieldValues> {
   validation?: ZodSchema<T>;
   onSubmit?: SubmitHandler<T>;
   children: ReactElement<TFormField<T>> | ReactElement<TFormField<T>>[];
-  sx?: SxProps;
 }
 
 export const Form = <T extends FieldValues>({
   validation,
   onSubmit,
   children,
-  sx,
 }: IFormProps<T>) => {
   const {
     control,
@@ -31,7 +28,7 @@ export const Form = <T extends FieldValues>({
   });
 
   return (
-    <Stack component="form" sx={{ width: '100%', gap: 3, ...sx }}>
+    <Stack component="form" sx={{ width: '100%', gap: 3 }}>
       <>
         {Children.map(children, (child) => cloneElement(child, { control }))}
 

@@ -1,7 +1,8 @@
-import { Form, FormField } from 'Components';
+import { Form, TextFormField, PassFormField } from 'Components';
 import { formFieldNames } from 'Constants';
 import { signUpValidation } from 'Utils/validation';
 import { useSignUp } from 'Hooks';
+import { inputStyles } from 'Styles';
 
 import type { TSignUpForm } from 'Types';
 
@@ -20,12 +21,17 @@ export const SignUpPage = () => {
 
   return (
     <Form onSubmit={onSubmit} validation={signUpValidation}>
-      <FormField name={email} type="email" sx={{ mt: 2 }} label="Email" />
-      <FormField name={nickname} label="Nickname" />
-      <FormField
+      <TextFormField
+        name={email}
+        type="email"
+        sx={{ mt: 2, ...inputStyles }}
+        label="Email"
+      />
+      <TextFormField name={nickname} label="Nickname" sx={inputStyles} />
+      <PassFormField
         name={password}
         label="Password"
-        type="password"
+        sx={inputStyles}
         withPassCheck
       />
     </Form>
