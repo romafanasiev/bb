@@ -9,6 +9,7 @@ export const TextFormField = <T extends FieldValues>({
   control,
   name,
   defaultValue = '',
+  onBlur,
   ...rest
 }: TFormField<T>) => (
   <Controller
@@ -16,7 +17,7 @@ export const TextFormField = <T extends FieldValues>({
     control={control}
     defaultValue={defaultValue as PathValue<T, Path<T>>}
     render={({
-      field: { onChange, value, onBlur },
+      field: { onChange, value },
       fieldState: { error },
       formState: { isSubmitted },
     }) => (

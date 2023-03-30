@@ -9,5 +9,4 @@ export const formFieldNames = {
   price: 'price',
   preview: 'preview',
   fullVersion: 'fullVersion',
-  discount: 'discount',
 } as const;

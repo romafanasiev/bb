@@ -182,6 +182,9 @@ theme = createTheme(theme, {
           },
           '&.MuiButton-contained': {
             borderRadius,
+            '&:hover': {
+              backgroundColor: primary,
+            },
           },
           '&.MuiButton-outlined': {
             borderRadius,
