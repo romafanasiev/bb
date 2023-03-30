@@ -9,7 +9,7 @@ export type TTextInputProps = {
   value: string;
   error: boolean;
   isSubmitted: boolean;
-  helperText?: string | undefined;
+  helperText?: string;
 } & TextFieldProps;
 
 interface TPassCheck {

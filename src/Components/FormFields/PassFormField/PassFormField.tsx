@@ -9,13 +9,14 @@ export const PassFormField = <T extends FieldValues>({
   control,
   name,
   defaultValue = '',
+  onBlur,
   ...rest
 }: TFormField<T>) => (
   <Controller
     name={name as Path<T>}
     control={control}
     defaultValue={defaultValue as PathValue<T, Path<T>>}
-    render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => (
+    render={({ field: { onChange, value }, fieldState: { error } }) => (
       <PassInput
         {...rest}
         error={!!error}

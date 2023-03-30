@@ -1,38 +1,78 @@
 import { z } from 'zod';
 
-import { formFieldNames, errorMessages } from 'Constants';
+import {
+  formFieldNames,
+  errorMessages,
+  supportedFileTypes,
+  regExp,
+} from 'Constants';
 
-const { email, nickname, password } = formFieldNames;
+const {
+  email,
+  nickname,
+  password,
+  cover,
+  title,
+  bpm,
+  tags,
+  price,
+  preview,
+  fullVersion,
+} = formFieldNames;
+
 const {
   requiredField,
   maximumLength,
   passwordFormat: passErr,
   emailFormat,
+  requiredFile,
+  audioFormat,
+  thumbnailFormat,
+  priceErr,
+  tagsErr,
+  languageErr,
 } = errorMessages;
 
-const requiredFieldValidation = z.string({ required_error: requiredField });
+const { images, audio } = supportedFileTypes;
 
-const emailValidation = z
-  .string({ required_error: requiredField })
-  .trim()
-  .email({ message: emailFormat });
+const {
+  onlyEnglishLetters,
+  password: passRegExp,
+  lettersAndSeparator,
+} = regExp;
 
-const nicknameValidation = z
-  .string({ required_error: requiredField })
-  .trim()
+const imageValidation = z
+  .instanceof(File, { message: requiredFile })
+  .refine((file) => images.includes(file.type), thumbnailFormat);
+
+const audioValidation = z
+  .instanceof(File, { message: requiredFile })
+  .refine((file) => audio.includes(file.type), audioFormat);
+
+const requiredFieldValidation = z
+  .string()
+  .min(1, { message: requiredField })
+  .trim();
+
+const emailValidation = requiredFieldValidation.email({ message: emailFormat });
+
+const nicknameValidation = requiredFieldValidation
   .min(2, { message: 'Please enter minimum 2 symbols' })
   .max(32, maximumLength)
-  .regex(/^[a-zA-Z]+$/, { message: 'Please use only English letters' });
+  .regex(onlyEnglishLetters, { message: languageErr });
 
-const passwordValidation = z
-  .string({ required_error: requiredField })
-  .trim()
+const passwordValidation = requiredFieldValidation
   .min(8, { message: 'Please enter minimum 8 symbols' })
   .max(32, { message: maximumLength })
-  .regex(
-    /^.*((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-    { message: passErr },
-  );
+  .regex(passRegExp, { message: passErr });
+
+const priceValidation = z.coerce
+  .number({ invalid_type_error: priceErr })
+  .min(1, { message: 'Minimal value is 1' });
+
+const tagsValidation = requiredFieldValidation.regex(lettersAndSeparator, {
+  message: tagsErr,
+});
 
 export const signUpValidation = z.object({
   [email]: emailValidation,
@@ -43,4 +83,14 @@ export const signUpValidation = z.object({
 export const loginValidation = z.object({
   [email]: emailValidation,
   [password]: requiredFieldValidation,
+});
+
+export const uploadTrackValidation = z.object({
+  [cover]: z.optional(imageValidation),
+  [preview]: audioValidation,
+  [fullVersion]: audioValidation,
+  [title]: requiredFieldValidation,
+  [bpm]: requiredFieldValidation,
+  [tags]: tagsValidation,
+  [price]: priceValidation,
 });

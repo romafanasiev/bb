@@ -1,13 +1,17 @@
 import { Stack, Typography } from '@mui/material';
 
+import { regExp } from 'Constants';
+
 import { ConditionCheck } from './ConditionCheck';
+
+const { uppercase, lowercase, digit, specialChar } = regExp;
 
 export const PassCheck = ({ value = '' }: { value: string }) => {
   const valueLength = value.length >= 8;
-  const upperCaseCheck = /(?=.*[A-Z]){1}/.test(value);
-  const lowerCaseCheck = /(?=.*[a-z]){1}/.test(value);
-  const digitCheck = /(?=.*\d)/.test(value);
-  const specialCharChek = /(?=.*[!@#$%^&*()\-_=+{};:,<.>]){1}/.test(value);
+  const upperCaseCheck = uppercase.test(value);
+  const lowerCaseCheck = lowercase.test(value);
+  const digitCheck = digit.test(value);
+  const specialCharChek = specialChar.test(value);
 
   if (value) {
     return (
